@@ -17,7 +17,8 @@ function Register (){
     const handleInput = (e)=> {
         setValues({...values, [e.target.name]:[e.target.value]})
     }
-    function handleValidation(){
+    function handleValidation(e){
+        e.preventDefault();
         setErrors(validation(values))
     }
     function validation (values){
@@ -26,13 +27,13 @@ function Register (){
         const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/
         if (values.email==="")
             error.email = "Email không được để trống"
-        if (!email_pattern.test(values.email))
+        else if (!email_pattern.test(values.email))
             error.email = "Không hợp lệ"
         if (values.password==="")
             error.password = "Mật khẩu không được để trống"
-        if (!password_pattern.test(values.email))
-            error.password = "Không hợp lệ"
-        if (values.confirm_password === "" || values.confirm_password != values.password)
+        // else if (!password_pattern.test(values.email))
+        //     error.password = "Không hợp lệ"
+        if (String(values.confirm_password) != String(values.password))
             error.confirm_password = "Mật khâủ không hợp lệ"
         return error;
     }
@@ -41,7 +42,7 @@ function Register (){
                 <div className='register-content-left'>
                 </div>
                 <div className='register-form'>
-                    <form onSubmit={handleValidation}>
+                    <form onSubmit={(e) => handleValidation(e)}>
                         <div className='register-form-header'>
                             Đăng ký
                         </div>
@@ -55,8 +56,8 @@ function Register (){
                             className='register-input'
                             onChange={(e) => handleInput(e)}
                         />
-                        {errors.email && <p style={{color : 'red'}}>{errors.email}</p>}
-                        <br/><br/>
+                        {errors.email && <p style={{color : 'red', fontSize : '14px' , marginTop : '4px'}}>{errors.email}</p>}
+                        <br/>
                         <label for= 'password' className='register-label'>Mật khẩu</label> <br/>
                         <input 
                             type = 'password'
@@ -67,9 +68,9 @@ function Register (){
                             className='register-input'
                             onChange={(e) => handleInput(e)}
                         />
-                        {errors.password && <p style={{color : 'red'}}>{errors.password}</p>}
+                        {errors.password && <p style={{color : 'red', fontSize : '14px', marginTop : '4px'}}>{errors.password}</p>}
 
-                        <br/><br/>
+                        <br/>
                         <label for= 'confirm_password' className='register-label'>Nhập lại mật khẩu</label><br/>
                         <input 
                             type = 'password'
@@ -80,10 +81,10 @@ function Register (){
                              className='register-input'
                             onChange={(e) => handleInput(e)}
                         />
-                        {errors.confirm_password && <p style={{color : 'red'}}>{errors.confirm_password}</p>}
+                        {errors.confirm_password && <p style={{color : 'red', fontSize : '14px', marginTop : '4px'}}>{errors.confirm_password}</p>}
 
                         <br/>
-                        <button className='register-btn' disabled>
+                        <button className='register-btn'>
                             TIẾP THEO
                         </button>
                         <div className='register-form-footer'>

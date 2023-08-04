@@ -1,35 +1,10 @@
 import './login_email.scss'
 import React , {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login_email() {
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-
-    const history = useNavigate();
-    useEffect(()=> {
-        if (localStorage.getItem('user-infor')){
-            // history.push('/add')
-        }
-    },[]);
-
-    async function login (){
-        console.warn(email,password)
-        let item = {email,password}
-        let result = await fetch ('http://localhost:8000/api/auth/login',
-        {
-            method : 'POST',
-            headers : {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body : JSON.stringify(item)
-        });
-        result = await result.json();
-        localStorage.setItem("user-infor",JSON.stringify(result))
-        // history.push('/add')
-    }
 
     return ( 
         <div>
@@ -38,14 +13,11 @@ function Login_email() {
                             Đăng nhập
                         </h3>
                         <input type="text" name='email' placeholder='Email/Số điện thoại/Tên đăng nhập' 
-                        className='login-form-input' required
-                        onChange={(e)=> setEmail(e.target.value) }/>
+                        className='login-form-input' />
                         <input type="password" name='password' placeholder='Mật khẩu' 
-                        className='login-form-input' required
-                        onChange={(e)=> setPassword(e.target.value) }
+                        className='login-form-input' 
                         />
                         <button className='login-form-btn'
-                        onClick={login}
                         >
                             ĐĂNG NHẬP
                         </button>
