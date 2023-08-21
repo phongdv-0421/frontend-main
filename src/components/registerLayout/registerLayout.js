@@ -2,7 +2,7 @@
 // import Footer from '../Footer/footer'
 import logo from '../../assets/images/logo-shopee.png'
 import React from 'react'
-import Footer from '../Footer/footer'
+import Footer from '../footer/footer'
 import './registerLayout.scss'
 
 
