@@ -1,16 +1,15 @@
-import React from 'react'
-import AllRoutes from './view/router/index'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import RegisterPage from './register/register'
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AllRoutes from 'view/routes/index'
 
 function App() {
+   
     
     return (
         <BrowserRouter>
-            {/* <AllRoutes /> */}
-            <AllRoutes/>
+            <AllRoutes />
         </BrowserRouter>
     )
-}
 
-export default App
+}
+export default App;
