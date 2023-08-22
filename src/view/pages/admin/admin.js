@@ -5,6 +5,11 @@ import { faUser, faMoneyBill, faList, faDiamond, faHouse } from '@fortawesome/fr
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
+import AddProduct from './add-product'
+import userApi from 'api/userApi'
+import User from './user'
+
+
 function Admin() {
 
     const [show, setShow] = useState(1);
@@ -14,6 +19,20 @@ function Admin() {
     const [title, setTitle]= useState('')
     const [category, setCategory]= useState('')
 
+    const [user, setUser] = useState([]);
+    const [showAdd, setShowAdd] = useState(false);
+    useEffect(()=> {
+        const fetchProducts = async () => {
+            // const params = {_limit: 30}
+            const userList = await userApi.getAllUser();
+            setUser(userList.users);
+        }
+        fetchProducts();
+    }, [])
+
+    function addProduct () {
+        setShowAdd(!showAdd);
+    }
   
 
     useEffect (()=> {
@@ -194,7 +213,14 @@ function Admin() {
                     <div className= {show === 2 ? 'admin-product active' : 'admin-product'}>
                         <div className='admin-product-wrap'>
                             <div className='admin-product-add'>
-                                <form onSubmit={handleValues}>
+
+                                <button 
+                                onClick={addProduct}
+                                className='admin-product-add-btn'
+                                >Thêm sản phẩm 
+                                </button>
+                                {showAdd && <AddProduct />}
+                                {/* <form onSubmit={handleValues}>
                                     <input type = 'text' placeholder = 'Nhập tên sản phẩm' 
                                     className='admin-product-add-name' name = 'title'
                                     onChange={(e)=>setTitle(e.target.value)}
@@ -205,8 +231,9 @@ function Admin() {
                                     value = {category}
                                     onChange={(e)=>setCategory(e.target.value)}
                                     />
-                                    <button className='admin-product-add-btn'>Thêm</button>
-                                </form> 
+                                    
+                                </form>  */}
+                                
                         </div>
                         <form onSubmit={handleUpdate}>
 
@@ -224,7 +251,10 @@ function Admin() {
                         </div>
                     </div>
                     <div className= {show === 3 ? 'admin-user active' : 'admin-user'}>
-                        
+                        {/* <div className='admin-main-header'>Quản lý user</div> */}
+                        <div>
+                            <User /> 
+                        </div>
                     </div>
                     <div className= {show === 4 ? 'admin-review active' : 'admin-review'}>
                         

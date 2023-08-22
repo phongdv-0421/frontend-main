@@ -22,6 +22,7 @@ function ProductDetails() {
     const [like , setLike] = useState(false)
     const [active , setActive] = useState('')
     const [count, setCount] = useState(1)
+    
     const handleClick = (e)=> {
         setActive(e.target.id)
     }
