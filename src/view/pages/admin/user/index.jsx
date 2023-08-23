@@ -14,16 +14,16 @@ function User(props) {
     const [data, setData] = useState([]);
     const [list, setList] = useState([]);
 
-    const [users, setUsers] = useState([]);
-    useEffect (() => {
-    const fetchUser = async () => {
-        const userList = await userApi.getAllUser();
-        // console.log(userList);
-        setUsers(userList.users);
-    }
+    // const [users, setUsers] = useState([]);
+    // useEffect (() => {
+    // const fetchUser = async () => {
+    //     const userList = await userApi.getAllUser();
+    //     // console.log(userList);
+    //     setUsers(userList.users);
+    // }
 
-    fetchUser();
-    }, [])
+    // fetchUser();
+    // }, [])
 
 
 
@@ -110,7 +110,6 @@ function User(props) {
             />
             </div>
         </div>
-        {/* {users && users.length > 0 && <img src= {'/@fs/' + `${users.avatar_url}`} alt='hinh_anh' /> } */}
       </>
     );
 }
