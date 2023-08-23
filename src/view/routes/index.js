@@ -10,7 +10,7 @@ const FlashSale = LoadableComponent(()=> import('view/pages/flash-sale'))
 const Login = LoadableComponent(()=> import('view/pages/login/login.js'))
 const Register = LoadableComponent(()=> import('view/pages/register/register.js'))
 const Cart = LoadableComponent(()=> import('view/pages/cart/cart.js'))
-const Admin= LoadableComponent(()=> import('view/pages/admin/admin.js'))
+// const Admin= LoadableComponent(()=> import('view/pages/admin/admin.js'))
 const ProductDetails= LoadableComponent(()=> import('view/pages/product-details/ProductDetails.js'))
 
 
@@ -40,9 +40,9 @@ function AllRoutes(){
                 <Route 
                     path="/cart/" 
                     element={<Cart />}/>
-                <Route 
+                {/* <Route 
                     path="/admin/" 
-                    element={<Admin />}/>
+                    element={<Admin />}/> */}
                 <Route 
                     path="/product-details/" 
                     element={<ProductDetails />}/>       
