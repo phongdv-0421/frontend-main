@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import AllRoutes from "./view/routes";
+import AllRoutes from 'view/routes/index'
 
 function App() {
    

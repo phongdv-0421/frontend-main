@@ -2,7 +2,7 @@ import axios from 'axios'
 import queryString from 'query-string'
 
  const axiosClient = axios.create({
-    baseURL: 'https://js-post-api.herokuapp.com/api/',
+    baseURL: process.env.REACT_APP_API_URL,
     
     headers: {
         'content-type': 'application/json',
@@ -16,6 +16,19 @@ import queryString from 'query-string'
         }
     })
 
-
+export const axiosClient2 = axios.create({
+        baseURL: process.env.REACT_APP_API_URL_2,
+        
+        headers: {
+            'content-type': 'application/json',
+        },
+        paramsSerializer: (params) => queryString.stringify(params),
+    })
+    
+axiosClient2.interceptors.response.use((response) => {
+        if(response && response.data) {
+            return response.data;
+        }
+    })
 
 export default axiosClient;

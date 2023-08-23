@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
-import Header from "../header";
+import Header from 'components/header'
+import Footer from 'components/footer'
 
 
 function MainLayout(props) {
@@ -16,7 +17,7 @@ function MainLayout(props) {
                                 <props.component />
                             </div>
                         </div>
-                 
+                        <Footer />
                     </Layout>
                     
                 </Layout>
