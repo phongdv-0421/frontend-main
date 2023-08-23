@@ -6,7 +6,7 @@ function CategoryList (props) {
 
   const category = props.category;
   // const category2 = props.category2;
-  console.log(category);
+  // console.log(category);
     return (
         <>
             <Row>
