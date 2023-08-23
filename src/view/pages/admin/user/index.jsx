@@ -18,7 +18,7 @@ function User(props) {
     useEffect (() => {
     const fetchUser = async () => {
         const userList = await userApi.getAllUser();
-        // console.log(userList.users[0].avatar_url);
+        // console.log(userList);
         setUsers(userList.users);
     }
 
@@ -34,6 +34,7 @@ function User(props) {
           setInitLoading(false);
           setData(res.results);
           setList(res.results);
+        // console.log(res.results);
         });
     }, []);
 
@@ -99,8 +100,8 @@ function User(props) {
                     <Skeleton avatar title={false} loading={item.loading} active>
                     <List.Item.Meta
                         avatar={<Avatar src={item.picture.large} />}
-                        title={<a href="https://ant.design">{item.name?.last}</a>}
-                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                        title={<a href="/">{item.name?.last}</a>}
+                        description="Một người nào đó, tại user chưa có description"
                     />
                     <div>User</div>
                     </Skeleton>
@@ -109,6 +110,7 @@ function User(props) {
             />
             </div>
         </div>
+        {/* {users && users.length > 0 && <img src= {'/@fs/' + `${users.avatar_url}`} alt='hinh_anh' /> } */}
       </>
     );
 }
