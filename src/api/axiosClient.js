@@ -2,7 +2,7 @@ import axios from 'axios'
 import queryString from 'query-string'
 
  const axiosClient = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: 'https://js-post-api.herokuapp.com/api',
     
     headers: {
         'content-type': 'application/json',
@@ -17,7 +17,7 @@ import queryString from 'query-string'
     })
 
 export const axiosClient2 = axios.create({
-        baseURL: process.env.REACT_APP_API_URL_2,
+        baseURL: 'http://localhost:8000/api',
         
         headers: {
             'content-type': 'application/json',
